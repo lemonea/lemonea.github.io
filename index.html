@@ -1,62 +1,60 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-    <title>Crypto Price Monitor</title>
-    <meta http-equiv="refresh" content="15">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2670.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
 </head>
 <body>
-    <h2>Real-time Crypto Prices</h2>
-    
-    <!-- 动态显示（给人看） -->
-    <div class="dynamic">
-        <div id="ethPrice">ETH: Loading...</div>
-        <div id="btcPrice">BTC: Loading...</div>
-        <div id="timestamp">Updated: <span id="time"></span></div>
-    </div>
-    
-    <!-- 静态显示（给Claude读取） -->
-    <div class="static" style="border: 1px solid #ccc; margin: 20px 0; padding: 10px;">
-        <h3>For Claude AI (Static Data)</h3>
-        <div id="ethStatic">ETH_PRICE_PLACEHOLDER</div>
-        <div id="btcStatic">BTC_PRICE_PLACEHOLDER</div>
-        <div id="timeStatic">TIME_PLACEHOLDER</div>
-    </div>
-    
-    <script>
-        async function updatePrices() {
-            try {
-                // ETH Price
-                const ethResponse = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT');
-                const ethData = await ethResponse.json();
-                const ethPrice = parseFloat(ethData.price).toFixed(2);
-                
-                // BTC Price
-                const btcResponse = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
-                const btcData = await btcResponse.json();
-                const btcPrice = parseFloat(btcData.price).toFixed(2);
-                
-                const currentTime = new Date().toLocaleTimeString();
-                
-                // 更新动态显示
-                document.getElementById('ethPrice').textContent = `ETH: $${ethPrice}`;
-                document.getElementById('btcPrice').textContent = `BTC: $${btcPrice}`;
-                document.getElementById('time').textContent = currentTime;
-                
-                // 更新静态显示（Claude能读取的）
-                document.getElementById('ethStatic').textContent = `ETH: $${ethPrice}`;
-                document.getElementById('btcStatic').textContent = `BTC: $${btcPrice}`;
-                document.getElementById('timeStatic').textContent = `Updated: ${currentTime}`;
-                
-                // 同时更新页面标题（Claude也能读取）
-                document.title = `ETH: $${ethPrice} | BTC: $${btcPrice}`;
-                
-            } catch (error) {
-                console.error('Error fetching prices:', error);
-            }
-        }
-        
-        updatePrices();
-        setInterval(updatePrices, 10000); // Update every 10 seconds
-    </script>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Crypto Prices Loading...&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Real-time Crypto Prices&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="display"&gt;Loading...&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>async function updateAll() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const ethResp = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const ethData = await ethResp.json();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const btcResp = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const btcData = await btcResp.json();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const ethPrice = parseFloat(ethData.price).toFixed(2);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const btcPrice = parseFloat(btcData.price).toFixed(2);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const time = new Date().toLocaleTimeString();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// 方法1: 更新标题</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.title = `ETH: $${ethPrice} | BTC: $${btcPrice}`;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// 方法2: 重写整个body</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.body.innerHTML = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h2&gt;Crypto Prices (Updated: ${time})&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;ETH: $${ethPrice}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;BTC: $${btcPrice}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;Last Update: ${time}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;!-- CLAUDE_DATA: ETH:$${ethPrice}, BTC:$${btcPrice} --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>`;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.body.innerHTML = `&lt;div&gt;Error: ${error.message}&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>updateAll();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>setInterval(updateAll, 15000);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
 </body>
 </html>
